@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Benjamin Payet · Chief Product Officer</title>
+  <meta name="description" content="Chief Product Officer with 8+ years building enterprise B2B SaaS and AI products. Paris." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* ─── Reset ─────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    /* ─── Tokens ─────────────────────────────────────────────────── */
+    :root {
+      --ink:    #0a0a0a;
+      --muted:  #6b6b6b;
+      --rule:   #e5e5e5;
+      --bg:     #ffffff;
+      --accent: #2754D7;
+      --mono:   'JetBrains Mono', 'Fira Mono', ui-monospace, monospace;
+      --sans:   'Inter', system-ui, sans-serif;
+      --max:    1100px;
+      --pad-h:  clamp(1.5rem, 5vw, 4rem);
+    }
+
+    /* ─── Base ───────────────────────────────────────────────────── */
+    body {
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--ink);
+      font-size: 1rem;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ─── Layout helpers ─────────────────────────────────────────── */
+    .container {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 var(--pad-h);
+    }
+    hr.rule { border: none; border-top: 1px solid var(--rule); margin: 0; }
+
+    /* ─── Section label ──────────────────────────────────────────── */
+    .section-label {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 3rem;
+    }
+
+    /* ─── Animate-in ─────────────────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+    .reveal.in-view { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+    }
+
+    /* ─── NAV ────────────────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--rule);
+    }
+    .nav-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 var(--pad-h);
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-name { font-size: 0.85rem; font-weight: 500; letter-spacing: 0.02em; }
+    .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.8rem;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-family: var(--mono);
+    }
+    .nav-links a:hover { color: var(--ink); text-decoration: none; }
+    .nav-links .nav-cta { color: var(--accent); font-weight: 500; }
+    @media (max-width: 600px) { .nav-links li:not(:last-child) { display: none; } }
+
+    /* ─── HERO ───────────────────────────────────────────────────── */
+    #hero { padding-top: 130px; padding-bottom: 90px; }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 0 4rem;
+      align-items: start;
+    }
+    @media (max-width: 820px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero-photo-col { order: -1; margin-bottom: 2.5rem; }
+    }
+
+    .hero-eyebrow {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+    .hero-title {
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      font-weight: 300;
+      line-height: 1.04;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.5rem;
+    }
+    .hero-title strong { font-weight: 600; }
+
+    /* Value statement: the one line a headhunter reads first */
+    .hero-statement {
+      max-width: 470px;
+      font-size: clamp(1.15rem, 1.6vw, 1.4rem);
+      font-weight: 400;
+      line-height: 1.45;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      margin-bottom: 1.5rem;
+    }
+    .hero-statement strong { font-weight: 600; }
+
+    .hero-tagline {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 2.75rem;
+    }
+    .hero-tagline span { margin: 0 0.5rem; color: var(--rule); }
+
+    /* Metrics band: balanced 2×2 block */
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(2, max-content);
+      gap: 1.75rem 3.5rem;
+      margin-bottom: 3rem;
+      padding-top: 1.75rem;
+      border-top: 1px solid var(--rule);
+    }
+    .metric { display: flex; flex-direction: column; gap: 0.3rem; }
+    .metric-value {
+      font-size: 1.6rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
+    .metric-label {
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* Hero photo */
+    .hero-photo-col {
+      position: sticky;
+      top: 80px;
+    }
+    .hero-photo {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      object-position: center 18%;
+      display: block;
+      filter: grayscale(100%) contrast(1.04);
+      border: 1px solid var(--rule);
+      transition: filter 0.4s ease;
+    }
+    .hero-photo:hover { filter: grayscale(0%) contrast(1); }
+    .hero-photo-placeholder {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      background: var(--rule);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border: 1px solid var(--rule);
+    }
+
+    /* CTAs */
+    .hero-ctas { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; }
+    .btn-primary {
+      display: inline-block;
+      padding: 0.75rem 1.75rem;
+      background: var(--ink);
+      color: var(--bg);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-family: var(--mono);
+      border: 1px solid var(--ink);
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn-primary:hover { background: var(--bg); color: var(--ink); text-decoration: none; }
+    .btn-ghost {
+      display: inline-block;
+      padding: 0.75rem 1.75rem;
+      background: transparent;
+      color: var(--muted);
+      font-size: 0.8rem;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-family: var(--mono);
+      border: 1px solid var(--rule);
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-ghost:hover { border-color: var(--ink); color: var(--ink); text-decoration: none; }
+
+    /* ─── SECTIONS (shared) ──────────────────────────────────────── */
+    .section { padding: 80px 0; }
+
+    /* ─── 01 / PROFILE ───────────────────────────────────────────── */
+    .profile-text {
+      max-width: 680px;
+      font-size: 1.15rem;
+      font-weight: 300;
+      line-height: 1.75;
+    }
+
+    /* ─── 02 / EXPERTISE ─────────────────────────────────────────── */
+    .expertise-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3rem;
+    }
+    .expertise-col h3 {
+      font-size: 0.7rem;
+      font-family: var(--mono);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--rule);
+    }
+    .expertise-list { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+    .expertise-list li { font-size: 0.875rem; font-weight: 400; line-height: 1.4; }
+    @media (max-width: 700px) { .expertise-grid { grid-template-columns: 1fr; gap: 2rem; } }
+
+    /* ─── 03 / WORK ──────────────────────────────────────────────── */
+    .work-entries { display: flex; flex-direction: column; gap: 0; }
+    .work-entry {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 0 3rem;
+      padding: 2.5rem 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    .work-entry:first-child { border-top: 1px solid var(--rule); }
+    .work-meta { padding-top: 0.1rem; }
+    .work-company {
+      font-size: 0.72rem;
+      font-family: var(--mono);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.35rem;
+    }
+    .work-role { font-size: 1rem; font-weight: 500; margin-bottom: 0.2rem; }
+    .work-dates { font-size: 0.75rem; font-family: var(--mono); color: var(--muted); }
+    .work-desc {
+      font-size: 0.9rem;
+      line-height: 1.7;
+      margin-bottom: 1rem;
+      color: var(--muted);
+      font-weight: 300;
+    }
+    .work-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
+    .work-bullets li {
+      font-size: 0.875rem;
+      line-height: 1.6;
+      padding-left: 1.1rem;
+      position: relative;
+    }
+    .work-bullets li::before {
+      content: '–';
+      position: absolute;
+      left: 0;
+      color: var(--rule);
+      font-size: 0.75rem;
+    }
+    .work-bullets li strong { font-weight: 500; color: var(--ink); }
+    .work-tag {
+      display: inline-block;
+      margin-top: 0.8rem;
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      padding: 0.15rem 0.5rem;
+      border-radius: 2px;
+    }
+    @media (max-width: 700px) { .work-entry { grid-template-columns: 1fr; gap: 0.75rem; } }
+
+    /* ─── 04 / EDUCATION ─────────────────────────────────────────── */
+    .edu-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+    .edu-degree { font-size: 0.95rem; font-weight: 500; margin-bottom: 0.2rem; }
+    .edu-school { font-size: 0.8rem; color: var(--muted); font-family: var(--mono); }
+    @media (max-width: 600px) { .edu-grid { grid-template-columns: 1fr; } }
+
+    /* ─── 05 / CONTACT ───────────────────────────────────────────── */
+    #contact { padding: 100px 0; }
+    .contact-headline {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 300;
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+      margin-bottom: 2.5rem;
+      max-width: 600px;
+    }
+    .contact-headline strong { font-weight: 600; }
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem 2.5rem;
+      align-items: center;
+      margin-bottom: 2.5rem;
+    }
+    .contact-link { display: flex; flex-direction: column; gap: 0.15rem; }
+    .contact-link-label {
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .contact-link-value { font-size: 0.9rem; color: var(--ink); }
+    .contact-link-value a { color: var(--ink); }
+    .contact-link-value a:hover { color: var(--accent); text-decoration: none; }
+
+    /* ─── FOOTER ─────────────────────────────────────────────────── */
+    footer { border-top: 1px solid var(--rule); padding: 1.5rem 0; }
+    .footer-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 var(--pad-h);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-name { font-size: 0.75rem; font-weight: 500; }
+    .footer-note {
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+
+    /* ─── PRINT ──────────────────────────────────────────────────── */
+    @media print {
+      nav, .hero-ctas, #contact, footer, .section-label,
+      .hero-photo-col { display: none !important; }
+      body { font-size: 11pt; color: #000; }
+      .hero-grid { grid-template-columns: 1fr; }
+      #hero { padding-top: 1cm; padding-bottom: 0.5cm; }
+      .hero-title { font-size: 28pt; }
+      .hero-tagline, .metrics { margin-bottom: 0.5cm; }
+      .metric-value { font-size: 14pt; }
+      .section { padding: 0.5cm 0; }
+      .work-entry { page-break-inside: avoid; }
+      a { color: #000; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV ───────────────────────────────────────────────────── -->
+  <nav>
+    <div class="nav-inner">
+      <span class="nav-name">Benjamin Payet</span>
+      <ul class="nav-links">
+        <li><a href="#expertise">Expertise</a></li>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#" class="nav-cta" onclick="window.print(); return false;">Resume ↓</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ── HERO ──────────────────────────────────────────────────── -->
+  <section id="hero">
+    <div class="container">
+      <div class="hero-grid">
+
+        <!-- Text col -->
+        <div class="hero-text-col">
+          <p class="hero-eyebrow reveal">Benjamin Payet &nbsp;·&nbsp; Paris</p>
+          <h1 class="hero-title reveal" style="transition-delay:.08s">
+            Chief<br><strong>Product</strong><br>Officer
+          </h1>
+          <p class="hero-statement reveal" style="transition-delay:.14s">
+            I build enterprise-grade products from frontier AI (LLMs, RAG, agentic
+            systems), and the teams that ship them. Currently at Ipsos, a global
+            leader in market research.
+          </p>
+          <p class="hero-tagline reveal" style="transition-delay:.2s">
+            Enterprise SaaS<span>·</span>Product Strategy<span>·</span>Agentic AI<span>·</span>AI Transformation
+          </p>
+
+          <div class="metrics reveal" style="transition-delay:.26s">
+            <div class="metric">
+              <span class="metric-value">8-figure</span>
+              <span class="metric-label">ARR platform owned</span>
+            </div>
+            <div class="metric">
+              <span class="metric-value">5</span>
+              <span class="metric-label">Generative AI products shipped</span>
+            </div>
+            <div class="metric">
+              <span class="metric-value">20%</span>
+              <span class="metric-label">Client productivity gain</span>
+            </div>
+            <div class="metric">
+              <span class="metric-value">Double-digit</span>
+              <span class="metric-label">Growth since going AI-first</span>
+            </div>
+          </div>
+
+          <div class="hero-ctas reveal" style="transition-delay:.32s">
+            <a href="#contact" class="btn-primary">Get in touch</a>
+            <a href="#" class="btn-ghost" onclick="window.print(); return false;">Download resume</a>
+          </div>
+        </div>
+
+        <!-- Photo col -->
+        <div class="hero-photo-col reveal" style="transition-delay:.12s">
+          <img
+            src="profile_picture.JPG"
+            alt="Benjamin Payet"
+            class="hero-photo"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+          />
+          <div class="hero-photo-placeholder" style="display:none;">
+            Drop photo.jpg here
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule" />
+
+  <!-- ── 01 / PROFILE ──────────────────────────────────────────── -->
+  <section class="section" id="profile">
+    <div class="container">
+      <p class="section-label reveal">01 / Profile</p>
+      <p class="profile-text reveal" style="transition-delay:.06s">
+        Chief Product Officer with 8+ years building and scaling enterprise B2B SaaS, the last 4
+        leading AI and Generative AI product strategy at Ipsos, a global leader in
+        market research operating in 90+ countries. I turn frontier AI (LLMs, RAG, agentic systems)
+        into enterprise-grade products that close seven-figure deals and measurably lift client
+        productivity. Proven at defining vision, building multi-squad teams, and driving AI
+        transformation from roadmap to revenue.
+      </p>
+    </div>
+  </section>
+
+  <hr class="rule" />
+
+  <!-- ── 02 / EXPERTISE ─────────────────────────────────────────── -->
+  <section class="section" id="expertise">
+    <div class="container">
+      <p class="section-label reveal">02 / Expertise</p>
+      <div class="expertise-grid">
+        <div class="expertise-col reveal">
+          <h3>Leadership</h3>
+          <ul class="expertise-list">
+            <li>C-level Collaboration</li>
+            <li>Cross-functional Management</li>
+            <li>Team Building &amp; Org Design</li>
+            <li>P&amp;L Ownership</li>
+            <li>Board &amp; Exec Reporting</li>
+          </ul>
+        </div>
+        <div class="expertise-col reveal" style="transition-delay:.08s">
+          <h3>Product</h3>
+          <ul class="expertise-list">
+            <li>Product Strategy &amp; Vision</li>
+            <li>Roadmap Planning &amp; Prioritization</li>
+            <li>Enterprise B2B SaaS</li>
+            <li>Go-to-Market</li>
+            <li>Discovery &amp; Validation</li>
+          </ul>
+        </div>
+        <div class="expertise-col reveal" style="transition-delay:.16s">
+          <h3>AI Expertise</h3>
+          <ul class="expertise-list">
+            <li>Generative AI &amp; LLMs</li>
+            <li>AI Agents &amp; Agentic Workflows</li>
+            <li>AI Product Strategy &amp; Transformation</li>
+            <li>RAG, Fine-tuning, Evaluation</li>
+            <li>NLP, Machine Learning, LLMOps</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule" />
+
+  <!-- ── 03 / WORK ──────────────────────────────────────────────── -->
+  <section class="section" id="work">
+    <div class="container">
+      <p class="section-label reveal">03 / Selected Work</p>
+
+      <div class="work-entries">
+
+        <!-- Synthesio CPO -->
+        <div class="work-entry reveal">
+          <div class="work-meta">
+            <p class="work-company">Ipsos Synthesio</p>
+            <p class="work-role">Chief Product Officer</p>
+            <p class="work-dates">Jan 2022 – Present</p>
+          </div>
+          <div class="work-body">
+            <p class="work-desc">
+              Leading AI and Generative AI product strategy within Ipsos Group, a global
+              leader in market research, repositioning the B2B SaaS platform toward AI-first and
+              delivering a new category of agentic intelligence tools for Fortune&nbsp;500 brands.
+            </p>
+            <ul class="work-bullets">
+              <li><strong>AI Transformation:</strong> Repositioned the entire product portfolio to AI-first, embedding Generative AI across core modules and establishing the company's first LLM evaluation and prompt-ops practices.</li>
+              <li><strong>Generative AI Agents:</strong> Launched five AI agents in enterprise production, enabling autonomous research, synthesis, and insight surfacing for global brands.</li>
+              <li><strong>Agentic AI:</strong> Delivered agentic workflows that cut analyst turnaround from days to hours, unlocking a 20% productivity gain for clients including L'Oréal.</li>
+              <li><strong>Team Leadership:</strong> Built and led an 8-person product org across two squads focused on profitability and Generative AI.</li>
+              <li><strong>Business Impact:</strong> Secured enterprise deals exceeding €1M, establishing Synthesio as the AI-first choice for global consumer intelligence.</li>
+            </ul>
+            <span class="work-tag">Agentic AI · AI Transformation · Enterprise B2B</span>
+          </div>
+        </div>
+
+        <!-- Synthesio SPM -->
+        <div class="work-entry reveal">
+          <div class="work-meta">
+            <p class="work-company">Ipsos Synthesio</p>
+            <p class="work-role">Senior Product Manager</p>
+            <p class="work-dates">Jul 2019 – Dec 2021</p>
+          </div>
+          <div class="work-body">
+            <p class="work-desc">
+              Drove the SaaS pivot from social listening to market research, opening a new revenue
+              segment through deep integration with Ipsos survey capabilities.
+            </p>
+            <ul class="work-bullets">
+              <li><strong>Market Research Pivot:</strong> Supported the SaaS expansion from social listening to market research by integrating Ipsos surveys into the platform.</li>
+              <li><strong>Data Quality:</strong> Built ML feedback tooling that measurably improved enrichment quality for NLP algorithms at scale.</li>
+              <li><strong>Trend Detection:</strong> Designed products to identify emerging trends in consumer conversations for enterprise clients.</li>
+              <li><strong>Business Impact:</strong> Generated 25% of MRR from market research clients through differentiated value propositions.</li>
+            </ul>
+            <span class="work-tag">NLP · ML · Market Research</span>
+          </div>
+        </div>
+
+        <!-- Quorum -->
+        <div class="work-entry reveal">
+          <div class="work-meta">
+            <p class="work-company">Quorum</p>
+            <p class="work-role">Product Manager</p>
+            <p class="work-dates">Jul 2018 – Jul 2019</p>
+          </div>
+          <div class="work-body">
+            <p class="work-desc">
+              Early-stage GovTech SaaS: designed and scaled the core product suite from zero to
+              enterprise contracts across Europe.
+            </p>
+            <ul class="work-bullets">
+              <li><strong>Product Scaling:</strong> Built a CRM-style web app, ML prioritization algorithms, and mobile apps from early stage to production.</li>
+              <li><strong>Business Impact:</strong> Secured annual contracts with top-tier political parties across Europe.</li>
+            </ul>
+            <span class="work-tag">GovTech · ML · Mobile</span>
+          </div>
+        </div>
+
+        <!-- EY -->
+        <div class="work-entry reveal">
+          <div class="work-meta">
+            <p class="work-company">EY</p>
+            <p class="work-role">Project Management Officer</p>
+            <p class="work-dates">Sep 2017 – Jun 2018</p>
+          </div>
+          <div class="work-body">
+            <ul class="work-bullets">
+              <li>Organized the implementation of centralized IS systems for unified reporting across Agromousquetaires.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule" />
+
+  <!-- ── 04 / EDUCATION ─────────────────────────────────────────── -->
+  <section class="section" id="education">
+    <div class="container">
+      <p class="section-label reveal">04 / Education</p>
+      <div class="edu-grid">
+        <div class="edu-item reveal">
+          <p class="edu-degree">IS Engineering, Master's Degree</p>
+          <p class="edu-school">Toulouse 1 University &nbsp;·&nbsp; 2012 – 2015</p>
+        </div>
+        <div class="edu-item reveal" style="transition-delay:.06s">
+          <p class="edu-degree">Computer Science, Bachelor's Degree</p>
+          <p class="edu-school">Lyon 1 University &nbsp;·&nbsp; 2010 – 2012</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule" />
+
+  <!-- ── 05 / CONTACT ───────────────────────────────────────────── -->
+  <section id="contact">
+    <div class="container">
+      <h2 class="contact-headline reveal">
+        Let's build<br><strong>something ambitious.</strong>
+      </h2>
+
+      <div class="contact-links reveal" style="transition-delay:.1s">
+        <div class="contact-link">
+          <span class="contact-link-label">Email</span>
+          <span class="contact-link-value">
+            <a href="mailto:benjamin.payet.goog@gmail.com">benjamin.payet.goog@gmail.com</a>
+          </span>
+        </div>
+        <div class="contact-link">
+          <span class="contact-link-label">LinkedIn</span>
+          <span class="contact-link-value">
+            <a href="https://www.linkedin.com/in/benjaminpayet1/" target="_blank" rel="noopener">linkedin.com/in/benjaminpayet1</a>
+          </span>
+        </div>
+        <div class="contact-link">
+          <span class="contact-link-label">Location</span>
+          <span class="contact-link-value">Paris, France</span>
+        </div>
+      </div>
+
+      <div class="hero-ctas reveal" style="transition-delay:.18s">
+        <a href="mailto:benjamin.payet.goog@gmail.com" class="btn-primary">Send a message</a>
+        <a href="#" class="btn-ghost" onclick="window.print(); return false;">Download resume</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ─────────────────────────────────────────────────── -->
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-name">Benjamin Payet</span>
+      <span class="footer-note">Built with restraint &nbsp;·&nbsp; 2026</span>
+    </div>
+  </footer>
+
+  <!-- ── SCROLL ANIMATIONS ──────────────────────────────────────── -->
+  <script>
+    (function () {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('in-view');
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
+      document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+    })();
+  </script>
+
+</body>
+</html>

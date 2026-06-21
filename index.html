@@ -112,10 +112,48 @@
       flex-direction: column;
     }
     @media (max-width: 820px) {
-      .hero-grid {
-        grid-template-columns: 1fr;
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-photo-col {
+        order: -1;
+        margin-bottom: 2rem;
+        position: static;
       }
-      .hero-photo-col { order: -1; margin-bottom: 2.5rem; }
+      .hero-photo {
+        aspect-ratio: 3 / 2;
+        object-position: center 15%;
+        max-height: 300px;
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 600px) {
+      /* Nav: show Contact link on mobile too */
+      .nav-links li:not(:last-child):not(:nth-last-child(2)) { display: none; }
+
+      /* Hero */
+      #hero { padding-top: 76px; padding-bottom: 40px; }
+      .hero-statement br { display: none; }
+
+      /* Metrics: fixed 2-col, tighter gap */
+      .metrics {
+        grid-template-columns: 1fr 1fr;
+        gap: 1.25rem 1.5rem;
+      }
+
+      /* CTAs: full width, easy tap targets */
+      .hero-ctas { flex-direction: column; }
+      .btn-primary, .btn-ghost {
+        text-align: center;
+        width: 100%;
+      }
+
+      /* Sections: tighter vertical rhythm */
+      .section { padding: 56px 0; }
+      .section-label { margin-bottom: 2rem; }
+      #contact { padding: 60px 0; }
+
+      /* Contact links: stack vertically */
+      .contact-links { flex-direction: column; gap: 1.25rem; }
     }
 
     .hero-eyebrow {

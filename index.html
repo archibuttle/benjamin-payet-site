@@ -117,7 +117,6 @@
       .hero-photo-col {
         order: -1;
         margin-bottom: 2rem;
-        position: static;
       }
       .hero-photo {
         aspect-ratio: 3 / 2;
@@ -220,9 +219,11 @@
     }
 
     /* Hero photo */
-    .hero-photo-col {
-      position: sticky;
-      top: 80px;
+    @media (min-width: 821px) {
+      .hero-photo-col {
+        position: sticky;
+        top: 80px;
+      }
     }
     .hero-photo {
       width: 100%;
@@ -377,7 +378,7 @@
     .edu-school { font-size: 0.8rem; color: var(--muted); font-family: var(--mono); }
     @media (max-width: 600px) { .edu-grid { grid-template-columns: 1fr; } }
 
-    /* ─── 05 / CONTACT ───────────────────────────────────────────── */
+    /* ─── 07 / CONTACT ───────────────────────────────────────────── */
     #contact { padding: 100px 0; }
     .contact-links {
       display: flex;
@@ -455,12 +456,11 @@
 
         <!-- Text col -->
         <div class="hero-text-col">
-          <p class="hero-eyebrow reveal">Benjamin Payet &nbsp;·&nbsp; Paris</p>
           <h1 class="hero-title reveal" style="transition-delay:.08s">
             Chief Product<br>Officer
           </h1>
           <p class="hero-statement reveal" style="transition-delay:.14s">
-            I build enterprise products that turn data into business answers, built on LLMs, RAG, and agentic systems, and the teams that ship them.<br>Currently at Ipsos, a global leader in market research.
+            I build two things: enterprise products that turn data into business answers, and the teams that ship them. Currently at Ipsos, a global leader in market research.
           </p>
           <p class="hero-tagline reveal" style="transition-delay:.2s">
             Enterprise SaaS<span>·</span>Product Strategy<span>·</span>Agentic AI<span>·</span>AI Transformation
@@ -589,8 +589,7 @@
             </p>
             <ul class="work-bullets">
               <li><strong>AI Transformation:</strong> Repositioned the entire product portfolio to AI-first, embedding Generative AI across core modules and establishing the company's first LLM evaluation and prompt-ops practices.</li>
-              <li><strong>Generative AI Agents:</strong> Launched five AI agents in enterprise production, enabling autonomous research, synthesis, and insight surfacing for global brands.</li>
-              <li><strong>Agentic AI:</strong> Delivered agentic workflows that cut analyst turnaround from days to hours, unlocking a 20% productivity gain for clients including L'Oréal.</li>
+              <li><strong>Agentic AI:</strong> Launched five AI agents in enterprise production, cutting analyst turnaround from days to hours and delivering a 20% productivity gain for clients including L'Oréal.</li>
               <li><strong>Team Leadership:</strong> Built and led an 8-person product org across two squads focused on profitability and Generative AI.</li>
               <li><strong>Business Impact:</strong> Secured enterprise deals exceeding €1M, establishing Synthesio as the AI-first choice for global consumer intelligence.</li>
             </ul>
@@ -611,7 +610,7 @@
               segment through deep integration with Ipsos survey capabilities.
             </p>
             <ul class="work-bullets">
-              <li><strong>Market Research Pivot:</strong> Supported the SaaS expansion from social listening to market research by integrating Ipsos surveys into the platform.</li>
+              <li><strong>Market Research Pivot:</strong> Drove the SaaS expansion from social listening to market research by integrating Ipsos surveys into the platform.</li>
               <li><strong>Data Quality:</strong> Built ML feedback tooling that measurably improved enrichment quality for NLP algorithms at scale.</li>
               <li><strong>Trend Detection:</strong> Designed products to identify emerging trends in consumer conversations for enterprise clients.</li>
               <li><strong>Business Impact:</strong> Generated 25% of MRR from market research clients through differentiated value propositions.</li>
@@ -648,8 +647,9 @@
             <p class="work-dates">Sep 2017 – Jun 2018</p>
           </div>
           <div class="work-body">
+            <p class="work-desc">IS transformation project at Agromousquetaires, one of France's largest food groups.</p>
             <ul class="work-bullets">
-              <li>Organized the implementation of centralized IS systems for unified reporting across Agromousquetaires.</li>
+              <li>Organized the implementation of centralized IS systems for unified reporting across the group.</li>
             </ul>
           </div>
         </div>
@@ -660,13 +660,45 @@
 
   <hr class="rule" />
 
-  <!-- ── 04 / EDUCATION ─────────────────────────────────────────── -->
+  <!-- ── 05 / SPEAKING & TEACHING ──────────────────────────────── -->
+  <section class="section" id="speaking">
+    <div class="container">
+      <p class="section-label reveal">05 / Speaking &amp; Teaching</p>
+      <div class="work-entries">
+
+        <div class="work-entry reveal">
+          <div class="work-meta">
+            <p class="work-company">Gen AI Days Paris</p>
+            <p class="work-dates">2023</p>
+          </div>
+          <div class="work-body">
+            <p class="work-desc">Conference talk on harnessing Generative AI for consumer insight discovery, alongside speakers from Meta, GitHub, and Carrefour.</p>
+          </div>
+        </div>
+
+        <div class="work-entry reveal">
+          <div class="work-meta">
+            <p class="work-company">IMT-BS</p>
+            <p class="work-dates">Guest Lecturer</p>
+          </div>
+          <div class="work-body">
+            <p class="work-desc">Guest lecturer on AI Product Strategy at Institut Mines-Télécom Business School, one of France's leading engineering and management schools.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule" />
+
+  <!-- ── 06 / EDUCATION ─────────────────────────────────────────── -->
   <section class="section" id="education">
     <div class="container">
-      <p class="section-label reveal">04 / Education</p>
+      <p class="section-label reveal">06 / Education</p>
       <div class="edu-grid">
         <div class="edu-item reveal">
-          <p class="edu-degree">IS Engineering, Master's Degree</p>
+          <p class="edu-degree">Information Systems Engineering, Master's Degree</p>
           <p class="edu-school">Toulouse 1 University &nbsp;·&nbsp; 2012 – 2015</p>
         </div>
         <div class="edu-item reveal" style="transition-delay:.06s">
@@ -674,12 +706,16 @@
           <p class="edu-school">Lyon 1 University &nbsp;·&nbsp; 2010 – 2012</p>
         </div>
       </div>
+      <p class="section-label reveal" style="margin-top:2rem">Side builds</p>
+      <p class="profile-text reveal" style="transition-delay:.06s">
+        Kitesurf marketplace &nbsp;·&nbsp; Automated greenhouse &nbsp;·&nbsp; Burgundy wine tastings app
+      </p>
     </div>
   </section>
 
   <hr class="rule" />
 
-  <!-- ── 05 / CONTACT ───────────────────────────────────────────── -->
+  <!-- ── 07 / CONTACT ───────────────────────────────────────────── -->
   <section id="contact">
     <div class="container">
       <div class="contact-links reveal">

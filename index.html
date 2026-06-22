@@ -5,6 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Benjamin Payet · Chief Product Officer</title>
   <meta name="description" content="Chief Product Officer with 10+ years in tech building enterprise B2B SaaS and AI products. Paris." />
+  <meta property="og:title" content="Benjamin Payet · Chief Product Officer" />
+  <meta property="og:description" content="Chief Product Officer with 10+ years in tech building enterprise B2B SaaS and AI products. Paris." />
+  <meta property="og:type" content="profile" />
+  <meta property="og:url" content="https://benjaminpayet.com" />
+  <meta property="og:image" content="https://benjaminpayet.com/profile_picture.JPG" />
+  <meta property="og:locale" content="en_GB" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Benjamin Payet · Chief Product Officer" />
+  <meta name="twitter:description" content="Chief Product Officer with 10+ years in tech building enterprise B2B SaaS and AI products. Paris." />
+  <meta name="twitter:image" content="https://benjaminpayet.com/profile_picture.JPG" />
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -87,6 +97,7 @@
       justify-content: space-between;
     }
     .nav-name { font-size: 0.85rem; font-weight: 500; letter-spacing: 0.02em; }
+    .nav-name a { color: var(--ink); text-decoration: none; }
     .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
     .nav-links a {
       font-size: 0.8rem;
@@ -96,7 +107,23 @@
       font-family: var(--mono);
     }
     .nav-links a:hover { color: var(--ink); text-decoration: none; }
-    .nav-links .nav-cta { color: var(--accent); font-weight: 500; }
+    .nav-links .nav-cta {
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      color: var(--accent);
+      font-weight: 500;
+      font-size: 0.8rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-family: var(--mono);
+    }
+    .nav-links .nav-cta:hover { color: var(--ink); }
+    .nav-cta svg { width: 14px; height: 14px; flex-shrink: 0; }
     @media (max-width: 600px) { .nav-links li:not(:last-child) { display: none; } }
 
     /* ─── HERO ───────────────────────────────────────────────────── */
@@ -283,6 +310,7 @@
       transition: border-color 0.2s, color 0.2s;
     }
     .btn-ghost:hover { border-color: var(--ink); color: var(--ink); text-decoration: none; }
+    button.btn-ghost, button.btn-primary { font-family: var(--mono); }
 
     /* ─── SECTIONS (shared) ──────────────────────────────────────── */
     .section { padding: 80px 0; }
@@ -420,8 +448,9 @@
 
     /* ─── PRINT ──────────────────────────────────────────────────── */
     @media print {
-      nav, .hero-ctas, #contact, footer, .section-label,
+      nav, .hero-ctas, #contact, footer,
       .hero-photo-col { display: none !important; }
+      .reveal { opacity: 1 !important; transform: none !important; }
       body { font-size: 11pt; color: #000; }
       .hero-grid { grid-template-columns: 1fr; }
       #hero { padding-top: 1cm; padding-bottom: 0.5cm; }
@@ -429,25 +458,36 @@
       .hero-tagline, .metrics { margin-bottom: 0.5cm; }
       .metric-value { font-size: 14pt; }
       .section { padding: 0.5cm 0; }
-      .work-entry { page-break-inside: avoid; }
+      .work-entry, .expertise-col, .edu-item { page-break-inside: avoid; }
+      .expertise-grid { grid-template-columns: 1fr 1fr; }
       a { color: #000; }
+      .section-label { font-size: 7pt; margin-bottom: 0.3cm; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ── NAV ───────────────────────────────────────────────────── -->
-  <nav>
-    <div class="nav-inner">
-      <span class="nav-name">Benjamin Payet</span>
-      <ul class="nav-links">
-        <li><a href="#expertise">Expertise</a></li>
-        <li><a href="#work">Work</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li><a href="#" class="nav-cta" onclick="window.print(); return false;">Resume ↓</a></li>
-      </ul>
-    </div>
-  </nav>
+  <!-- ── HEADER / NAV ──────────────────────────────────────────── -->
+  <header>
+    <nav>
+      <div class="nav-inner">
+        <h1 class="nav-name"><a href="/">Benjamin Payet</a></h1>
+        <ul class="nav-links">
+          <li><a href="#expertise">Expertise</a></li>
+          <li><a href="#work">Work</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li>
+            <button class="nav-cta" onclick="window.print()" title="Download resume as PDF">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 19H21V21H3V19ZM13 13.172L19.071 7.1L20.485 8.515L12 17L3.515 8.515L4.929 7.1L11 13.172V2H13V13.172Z"/></svg>
+              Resume
+            </button>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main>
 
   <!-- ── HERO ──────────────────────────────────────────────────── -->
   <section id="hero">
@@ -456,9 +496,9 @@
 
         <!-- Text col -->
         <div class="hero-text-col">
-          <h1 class="hero-title reveal" style="transition-delay:.08s">
+          <h2 class="hero-title reveal" style="transition-delay:.08s">
             Chief Product<br>Officer
-          </h1>
+          </h2>
           <p class="hero-statement reveal" style="transition-delay:.14s">
             I build two things: enterprise products that turn data into business answers, and the teams that ship them. Currently at Ipsos, a global leader in market research.
           </p>
@@ -487,7 +527,7 @@
 
           <div class="hero-ctas reveal" style="transition-delay:.32s">
             <a href="#contact" class="btn-primary">Get in touch</a>
-            <a href="#" class="btn-ghost" onclick="window.print(); return false;">Download resume</a>
+            <button class="btn-ghost" onclick="window.print()" title="Download resume as PDF"><svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14" style="vertical-align:-2px;margin-right:0.35rem" aria-hidden="true"><path d="M3 19H21V21H3V19ZM13 13.172L19.071 7.1L20.485 8.515L12 17L3.515 8.515L4.929 7.1L11 13.172V2H13V13.172Z"/></svg>Download resume</button>
           </div>
         </div>
 
@@ -513,7 +553,7 @@
   <!-- ── 01 / PROFILE ──────────────────────────────────────────── -->
   <section class="section" id="profile">
     <div class="container">
-      <p class="section-label reveal">01 / Profile</p>
+      <h2 class="section-label reveal">01 / Profile</h2>
       <p class="profile-text reveal" style="transition-delay:.06s">
         I've spent 10+ years building data products in enterprise B2B SaaS, the last four as
         Chief Product Officer leading the shift to AI-first. My focus is taking AI from roadmap
@@ -529,7 +569,7 @@
   <!-- ── 02 / EXPERTISE ─────────────────────────────────────────── -->
   <section class="section" id="expertise">
     <div class="container">
-      <p class="section-label reveal">02 / Expertise</p>
+      <h2 class="section-label reveal">02 / Expertise</h2>
       <div class="expertise-grid">
         <div class="expertise-col reveal">
           <h3>Leadership</h3>
@@ -570,7 +610,7 @@
   <!-- ── 03 / WORK ──────────────────────────────────────────────── -->
   <section class="section" id="work">
     <div class="container">
-      <p class="section-label reveal">03 / Selected Work</p>
+      <h2 class="section-label reveal">03 / Selected Work</h2>
 
       <div class="work-entries">
 
@@ -663,7 +703,7 @@
   <!-- ── 05 / SPEAKING & TEACHING ──────────────────────────────── -->
   <section class="section" id="speaking">
     <div class="container">
-      <p class="section-label reveal">05 / Speaking &amp; Teaching</p>
+      <h2 class="section-label reveal">05 / Speaking &amp; Teaching</h2>
       <div class="work-entries">
 
         <div class="work-entry reveal">
@@ -695,7 +735,7 @@
   <!-- ── 06 / EDUCATION ─────────────────────────────────────────── -->
   <section class="section" id="education">
     <div class="container">
-      <p class="section-label reveal">06 / Education</p>
+      <h2 class="section-label reveal">06 / Education</h2>
       <div class="edu-grid">
         <div class="edu-item reveal">
           <p class="edu-degree">Information Systems Engineering, Master's Degree</p>
@@ -706,7 +746,7 @@
           <p class="edu-school">Lyon 1 University &nbsp;·&nbsp; 2010 – 2012</p>
         </div>
       </div>
-      <p class="section-label reveal" style="margin-top:2rem">Side builds</p>
+      <h2 class="section-label reveal" style="margin-top:2rem">Side builds</h2>
       <p class="profile-text reveal" style="transition-delay:.06s">
         Kitesurf marketplace &nbsp;·&nbsp; Automated greenhouse &nbsp;·&nbsp; Burgundy wine tastings app
       </p>
@@ -722,7 +762,7 @@
         <div class="contact-link">
           <span class="contact-link-label">Email</span>
           <span class="contact-link-value">
-            <a href="mailto:benjamin.payet.goog@gmail.com">benjamin.payet.goog@gmail.com</a>
+            <a class="email-link" data-user="benjamin.payet.goog" data-domain="gmail.com">benjamin.payet.goog [at] gmail.com</a>
           </span>
         </div>
         <div class="contact-link">
@@ -738,11 +778,13 @@
       </div>
 
       <div class="hero-ctas reveal" style="transition-delay:.18s">
-        <a href="mailto:benjamin.payet.goog@gmail.com" class="btn-primary">Send a message</a>
-        <a href="#" class="btn-ghost" onclick="window.print(); return false;">Download resume</a>
+        <a class="btn-primary email-link" data-user="benjamin.payet.goog" data-domain="gmail.com">Send a message</a>
+        <button class="btn-ghost" onclick="window.print()" title="Download resume as PDF"><svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14" style="vertical-align:-2px;margin-right:0.35rem" aria-hidden="true"><path d="M3 19H21V21H3V19ZM13 13.172L19.071 7.1L20.485 8.515L12 17L3.515 8.515L4.929 7.1L11 13.172V2H13V13.172Z"/></svg>Download resume</button>
       </div>
     </div>
   </section>
+
+  </main>
 
   <!-- ── FOOTER ─────────────────────────────────────────────────── -->
   <footer>
@@ -769,6 +811,12 @@
       );
       document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
     })();
+
+    document.querySelectorAll('a.email-link').forEach(function(el) {
+      var email = el.dataset.user + '@' + el.dataset.domain;
+      el.href = 'mailto:' + email;
+      if (!el.classList.contains('btn-primary')) el.textContent = email;
+    });
   </script>
 
 </body>
